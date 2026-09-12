@@ -9,24 +9,28 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
-  
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
+  final List<Map<String, String>> _categories = [
+    {'title': 'Camiseta'},
+    {'title': 'Calça'},
+    {'title': 'Saia'},
+    {'title': 'Vestido'},
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: _scaffoldKey, 
+      key: _scaffoldKey,
       backgroundColor: const Color(0xFFF3F6EC),
       drawer: const Drawer(
         child: SafeArea(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-            ],
+            children: [],
           ),
         ),
       ),
-
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(64.0),
         child: SafeArea(
@@ -41,14 +45,12 @@ class _HomeScreenState extends State<HomeScreen> {
                   },
                 ),
                 const SizedBox(width: 4),
-
-                
                 Expanded(
                   child: Container(
-                    height: 48,
+                    height: 44,
                     decoration: BoxDecoration(
                       color: const Color(0xFFEBEFE5),
-                      borderRadius: BorderRadius.circular(24),
+                      borderRadius: BorderRadius.circular(22),
                     ),
                     padding: const EdgeInsets.symmetric(horizontal: 16),
                     child: Row(
@@ -59,7 +61,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               hintText: 'Buscar molde',
                               hintStyle: TextStyle(
                                 color: Colors.black54,
-                                fontSize: 16,
+                                fontSize: 15,
                               ),
                               border: InputBorder.none,
                             ),
@@ -76,8 +78,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
                 const SizedBox(width: 4),
-
-                // Ícone de Filtro
                 IconButton(
                   icon: const Icon(Icons.tune, color: Colors.black87),
                   onPressed: () {},
@@ -87,7 +87,55 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
       ),
-      body: const SizedBox.expand(),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+        child: GridView.builder(
+          physics: const NeverScrollableScrollPhysics(),
+          itemCount: _categories.length,
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            crossAxisSpacing: 12,
+            mainAxisSpacing: 12,
+            childAspectRatio: 0.9,
+          ),
+          itemBuilder: (context, index) {
+            final category = _categories[index];
+            return Container(
+              decoration: BoxDecoration(
+                color: const Color(0xFFEBB2C3),
+                borderRadius: BorderRadius.circular(20),
+              ),
+              padding: const EdgeInsets.all(6.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Expanded(
+                    child: Container(
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                        color: const Color(0xFFEDE7F0),
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 6),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 6.0, bottom: 4.0),
+                    child: Text(
+                      category['title']!,
+                      style: const TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.black87,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            );
+          },
+        ),
+      ),
       bottomNavigationBar: NavigationBarTheme(
         data: NavigationBarThemeData(
           indicatorColor: const Color(0xFFF3B4C2),
