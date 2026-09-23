@@ -10,8 +10,6 @@ class ModelaIFApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-
     return MaterialApp(
       title: 'ModelaIF',
       debugShowCheckedModeBanner: false,
@@ -19,7 +17,7 @@ class ModelaIFApp extends StatelessWidget {
         useMaterial3: true,
         // scaffoldBackgroundColor: Colors.white,
         colorScheme: ColorScheme.fromSeed(
-          seedColor: theme.primaryColor
+          seedColor: const Color(0xFF00CC4D)
         ),
       ),
       home: const HomeScreen(),
