@@ -28,19 +28,16 @@ class _PatternScreenState extends State<PatternScreen> {
     final theme = Theme.of(context);
 
     return Scaffold(
-      backgroundColor: const Color(0xFFF3F6EC),
-
       appBar: AppBar(
-        backgroundColor: Colors.white,
         elevation: 1,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.black87),
+          icon: const Icon(Icons.arrow_back),
           onPressed: () => Navigator.of(context).pop(),
         ),
         title: Text(
           widget.title,
-          style: const TextStyle(
-            color: Colors.black87,
+          style: TextStyle(
+            color: theme.colorScheme.onSurface,
             fontWeight: FontWeight.w600,
             fontSize: 20,
           ),
@@ -53,10 +50,8 @@ class _PatternScreenState extends State<PatternScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Card(
-              elevation: 0,
-              color: Colors.white,
-              shape: RoundedRectangleBorder(
+            Container(
+              decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
               ),
               clipBehavior: Clip.antiAlias,
@@ -66,19 +61,19 @@ class _PatternScreenState extends State<PatternScreen> {
                 ).copyWith(dividerColor: Colors.transparent),
                 child: ExpansionTile(
                   initiallyExpanded: true,
-                  backgroundColor: Colors.white,
-                  collapsedBackgroundColor: const Color(0xFFFBF4F6),
+                  backgroundColor: theme.colorScheme.surfaceContainer,
+                  collapsedBackgroundColor: theme.colorScheme.surfaceContainer,
                   tilePadding: const EdgeInsets.symmetric(
                     horizontal: 16,
                     vertical: 4,
                   ),
-                  iconColor: Colors.black87,
-                  collapsedIconColor: Colors.black87,
-                  title: const Row(
+                  iconColor: theme.colorScheme.onSurfaceVariant,
+                  collapsedIconColor: theme.colorScheme.onSurfaceVariant,
+                  title: Row(
                     children: [
                       Icon(
                         Icons.design_services_outlined,
-                        color: Color(0xFFD87093),
+                        color: theme.colorScheme.onSurfaceVariant,
                       ),
                       SizedBox(width: 12),
                       Text(
@@ -86,7 +81,7 @@ class _PatternScreenState extends State<PatternScreen> {
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
-                          color: Colors.black87,
+                          color: theme.colorScheme.onSurface,
                         ),
                       ),
                     ],
@@ -106,14 +101,14 @@ class _PatternScreenState extends State<PatternScreen> {
                         }),
                       ),
                     ),
-                    const Padding(
+                    Padding(
                       padding: EdgeInsets.only(left: 4.0, bottom: 8.0),
                       child: Text(
                         'Medidas Salvas',
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
-                          color: Colors.black87,
+                          color: theme.colorScheme.onSurface,
                         ),
                       ),
                     ),
@@ -124,7 +119,7 @@ class _PatternScreenState extends State<PatternScreen> {
                         itemCount: 4,
                         separatorBuilder: (context, index) => Divider(
                           height: 1,
-                          color: Colors.grey.shade200,
+                          color: theme.colorScheme.outlineVariant,
                           indent: 16,
                           endIndent: 16,
                         ),
@@ -140,23 +135,23 @@ class _PatternScreenState extends State<PatternScreen> {
                               ),
                             title: Text(
                               'Perfil $index',
-                              style: const TextStyle(
+                              style: TextStyle(
                                 fontWeight: FontWeight.w600,
                                 fontSize: 15,
-                                color: Colors.black87,
+                                color: theme.colorScheme.onSurface,
                               ),
                             ),
                             subtitle: Text(
                               '(data)',
-                              style: const TextStyle(
+                              style: TextStyle(
                                 fontSize: 12,
-                                color: Colors.black54,
+                                color: theme.colorScheme.onSurfaceVariant,
                               ),
                             ),
                             trailing: IconButton(
-                              icon: const Icon(
+                              icon: Icon(
                                 Icons.upload_outlined,
-                                color: Colors.black87,
+                                color: theme.colorScheme.onSurfaceVariant,
                               ),
                               onPressed: () {},
                             ),
