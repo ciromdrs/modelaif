@@ -50,7 +50,7 @@ class _HomeScreenState extends State<HomeScreen> {
               children: [
                 // Botão de Menu Hambúrguer
                 IconButton(
-                  icon: const Icon(Icons.menu, color: Colors.black87),
+                  icon: const Icon(Icons.menu/*, color: Colors.black87*/),
                   onPressed: () {
                     _scaffoldKey.currentState?.openDrawer();
                   },
@@ -94,7 +94,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
                 // Botão de Filtro
                 IconButton(
-                  icon: const Icon(Icons.tune, color: Colors.black87),
+                  icon: const Icon(Icons.filter, color: Colors.black87),
                   onPressed: () {},
                 ),
               ],
@@ -140,9 +140,9 @@ class _HomeScreenState extends State<HomeScreen> {
           indicatorColor: theme.primaryColorLight,
           iconTheme: WidgetStateProperty.resolveWith((states) {
             if (states.contains(WidgetState.selected)) {
-              return const IconThemeData(color: Colors.black87, size: 28);
+              return const IconThemeData(color: Colors.black87); //, size: 26);
             }
-            return const IconThemeData(color: Colors.black54, size: 26);
+            return const IconThemeData(color: Colors.black54); //, size: 26);
           }),
         ),
         child: NavigationBar(
@@ -161,8 +161,8 @@ class _HomeScreenState extends State<HomeScreen> {
               label: '',
             ),
             NavigationDestination(
-              icon: Icon(Icons.square_foot_outlined),
-              selectedIcon: Icon(Icons.square_foot),
+              icon: Icon(Icons.design_services_outlined),
+              selectedIcon: Icon(Icons.design_services),
               label: '',
             ),
           ],
@@ -200,13 +200,13 @@ class _AnimatedCategoryCardState extends State<_AnimatedCategoryCard> {
       onTap: widget.onTap,
       child: AnimatedScale(
         scale: _isPressed ? 0.95 : 1.0, // Encolhe levemente ao pressionar
-        duration: const Duration(milliseconds: 100),
+        duration: Duration(milliseconds: 100),
         child: Container(
           decoration: BoxDecoration(
             color: theme.primaryColorLight,
             borderRadius: BorderRadius.circular(20),
           ),
-          padding: const EdgeInsets.all(6.0),
+          padding: EdgeInsets.all(6.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -225,13 +225,13 @@ class _AnimatedCategoryCardState extends State<_AnimatedCategoryCard> {
 
               // Título da categoria
               Padding(
-                padding: const EdgeInsets.only(left: 6.0, bottom: 4.0),
+                padding: EdgeInsets.only(left: 6.0, bottom: 4.0),
                 child: Text(
                   widget.title,
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.w600,
-                    color: Colors.black87,
+                    color: theme.colorScheme.onPrimaryContainer,
                   ),
                 ),
               ),
