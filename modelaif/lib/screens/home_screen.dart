@@ -24,9 +24,11 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    
     return Scaffold(
       key: _scaffoldKey,
-      backgroundColor: const Color(0xFFF3F6EC),
+      backgroundColor: theme.scaffoldBackgroundColor,
 
       // DRAWER (Menu Lateral de Hambúrguer)
       drawer: const Drawer(
@@ -60,7 +62,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Container(
                     height: 44,
                     decoration: BoxDecoration(
-                      color: const Color(0xFFEBEFE5),
+                      color: const Color(0xffdddddd),
                       borderRadius: BorderRadius.circular(22),
                     ),
                     padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -135,7 +137,7 @@ class _HomeScreenState extends State<HomeScreen> {
       // BOTTOM NAVIGATION BAR (Barra Inferior Fixa)
       bottomNavigationBar: NavigationBarTheme(
         data: NavigationBarThemeData(
-          indicatorColor: const Color(0xFFF3B4C2),
+          indicatorColor: theme.primaryColorLight,
           iconTheme: WidgetStateProperty.resolveWith((states) {
             if (states.contains(WidgetState.selected)) {
               return const IconThemeData(color: Colors.black87, size: 28);
@@ -150,7 +152,7 @@ class _HomeScreenState extends State<HomeScreen> {
               _selectedIndex = index;
             });
           },
-          backgroundColor: const Color(0xFFFBF4F6),
+          backgroundColor: theme.secondaryHeaderColor,
           elevation: 0,
           destinations: const [
             NavigationDestination(
@@ -189,6 +191,8 @@ class _AnimatedCategoryCardState extends State<_AnimatedCategoryCard> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     return GestureDetector(
       onTapDown: (_) => setState(() => _isPressed = true),
       onTapUp: (_) => setState(() => _isPressed = false),
@@ -199,7 +203,7 @@ class _AnimatedCategoryCardState extends State<_AnimatedCategoryCard> {
         duration: const Duration(milliseconds: 100),
         child: Container(
           decoration: BoxDecoration(
-            color: const Color(0xFFEBB2C3),
+            color: theme.primaryColorLight,
             borderRadius: BorderRadius.circular(20),
           ),
           padding: const EdgeInsets.all(6.0),
@@ -211,7 +215,8 @@ class _AnimatedCategoryCardState extends State<_AnimatedCategoryCard> {
                 child: Container(
                   width: double.infinity,
                   decoration: BoxDecoration(
-                    color: const Color(0xFFEDE7F0),
+                    // color: const Color.fromARGB(255, 225, 221, 228),
+                    color: theme.cardColor,
                     borderRadius: BorderRadius.circular(16),
                   ),
                 ),
