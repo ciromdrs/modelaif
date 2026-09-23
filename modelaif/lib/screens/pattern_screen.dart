@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'back_bar.dart';
 
 class PatternScreen extends StatefulWidget {
   final String title;
@@ -26,25 +27,10 @@ class _PatternScreenState extends State<PatternScreen> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final backBar = BackBar(title: 'Detalhes do Molde', context: context);
 
     return Scaffold(
-      appBar: AppBar(
-        elevation: 1,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () => Navigator.of(context).pop(),
-        ),
-        title: Text(
-          widget.title,
-          style: TextStyle(
-            color: theme.colorScheme.onSurface,
-            fontWeight: FontWeight.w600,
-            fontSize: 20,
-          ),
-        ),
-        centerTitle: false,
-      ),
-
+      appBar: backBar,
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
         child: Column(
