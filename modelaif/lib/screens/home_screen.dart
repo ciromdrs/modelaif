@@ -28,7 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
     
     return Scaffold(
       key: _scaffoldKey,
-      backgroundColor: theme.scaffoldBackgroundColor,
+      backgroundColor: theme.colorScheme.surface,
 
       // DRAWER (Menu Lateral de Hambúrguer)
       drawer: const Drawer(
@@ -50,7 +50,7 @@ class _HomeScreenState extends State<HomeScreen> {
               children: [
                 // Botão de Menu Hambúrguer
                 IconButton(
-                  icon: const Icon(Icons.menu/*, color: Colors.black87*/),
+                  icon: const Icon(Icons.menu),
                   onPressed: () {
                     _scaffoldKey.currentState?.openDrawer();
                   },
@@ -62,18 +62,17 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Container(
                     height: 44,
                     decoration: BoxDecoration(
-                      color: const Color(0xffdddddd),
+                      color: theme.colorScheme.surfaceContainer,
                       borderRadius: BorderRadius.circular(22),
                     ),
-                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    padding: EdgeInsets.symmetric(horizontal: 16),
                     child: Row(
                       children: [
-                        const Expanded(
+                        Expanded(
                           child: TextField(
                             decoration: InputDecoration(
                               hintText: 'Buscar molde',
                               hintStyle: TextStyle(
-                                color: Colors.black54,
                                 fontSize: 15,
                               ),
                               border: InputBorder.none,
@@ -81,7 +80,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         ),
                         IconButton(
-                          icon: const Icon(Icons.search, color: Colors.black87),
+                          icon: Icon(Icons.search),
                           onPressed: () {},
                           padding: EdgeInsets.zero,
                           constraints: const BoxConstraints(),
@@ -94,7 +93,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
                 // Botão de Filtro
                 IconButton(
-                  icon: const Icon(Icons.filter, color: Colors.black87),
+                  icon: Icon(Icons.filter_list),
                   onPressed: () {},
                 ),
               ],
@@ -136,15 +135,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
       // BOTTOM NAVIGATION BAR (Barra Inferior Fixa)
       bottomNavigationBar: NavigationBarTheme(
-        data: NavigationBarThemeData(
-          indicatorColor: theme.primaryColorLight,
-          iconTheme: WidgetStateProperty.resolveWith((states) {
-            if (states.contains(WidgetState.selected)) {
-              return const IconThemeData(color: Colors.black87); //, size: 26);
-            }
-            return const IconThemeData(color: Colors.black54); //, size: 26);
-          }),
-        ),
+        data: NavigationBarThemeData(),
         child: NavigationBar(
           selectedIndex: _selectedIndex,
           onDestinationSelected: (int index) {
@@ -152,7 +143,6 @@ class _HomeScreenState extends State<HomeScreen> {
               _selectedIndex = index;
             });
           },
-          backgroundColor: theme.secondaryHeaderColor,
           elevation: 0,
           destinations: const [
             NavigationDestination(
@@ -203,7 +193,7 @@ class _AnimatedCategoryCardState extends State<_AnimatedCategoryCard> {
         duration: Duration(milliseconds: 100),
         child: Container(
           decoration: BoxDecoration(
-            color: theme.primaryColorLight,
+            color: theme.colorScheme.primaryContainer,
             borderRadius: BorderRadius.circular(20),
           ),
           padding: EdgeInsets.all(6.0),
@@ -215,8 +205,7 @@ class _AnimatedCategoryCardState extends State<_AnimatedCategoryCard> {
                 child: Container(
                   width: double.infinity,
                   decoration: BoxDecoration(
-                    // color: const Color.fromARGB(255, 225, 221, 228),
-                    color: theme.cardColor,
+                    color: theme.colorScheme.surfaceContainer,
                     borderRadius: BorderRadius.circular(16),
                   ),
                 ),
