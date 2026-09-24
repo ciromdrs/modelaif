@@ -7,5 +7,5 @@ Projeto desenvolvido no Instituto Federal de Educação, Ciência e Tecnologia d
 - Ciro Morais Medeiros (coordenador)
 
 ### Tecnologias utilizadas
-<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/dart/dart-original.svg" alt="Dart" width="40" title="Dart" />
+<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/dart/dart-original.svg" alt="Dart" width="40" title="Dart" />&nbsp;&nbsp;
 <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/flutter/flutter-original.svg" alt="Flutter" width="40" title="Flutter" />
