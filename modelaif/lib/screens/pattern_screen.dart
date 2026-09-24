@@ -3,9 +3,9 @@ import 'back_bar.dart';
 import 'package:modelaif/models/molde.dart';
 
 class PatternScreen extends StatefulWidget {
-  final Molde model;
+  final Molde molde;
 
-  const PatternScreen(this.model, {super.key});
+  const PatternScreen(this.molde, {super.key});
 
   @override
   State<PatternScreen> createState() => _PatternScreenState();
@@ -28,7 +28,10 @@ class _PatternScreenState extends State<PatternScreen> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final backBar = BackBar(title: widget.model.modelo, context: context);
+    final backBar = BackBar(title: widget.molde.modelo, context: context);
+    final parteWidgets = widget.molde.partes.map(
+      (parte) => ParteWidget(parte)
+    ).toList();
 
     return Scaffold(
       appBar: backBar,
@@ -149,7 +152,13 @@ class _PatternScreenState extends State<PatternScreen> {
                 ),
               ),
             ),
-          ],
+            ...parteWidgets.map(
+              (parte) => Padding(
+                padding: const EdgeInsets.symmetric(vertical:8, horizontal: 0),
+                child: parte,
+              )
+            ),
+          ]
         ),
       ),
     );
@@ -205,6 +214,44 @@ class _PatternScreenState extends State<PatternScreen> {
             : null,
       ),
       onChanged: (_) => setState(() {}),
+    );
+  }
+}
+
+
+class ParteWidget extends StatelessWidget {
+  final Parte parte;
+
+  const ParteWidget(this.parte, {super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
+    final decoration = BoxDecoration(
+      color: theme.colorScheme.primaryContainer,
+      borderRadius: BorderRadius.all(Radius.circular(16))
+    );
+
+    return Container(
+      decoration: decoration,
+      width: double.infinity,
+      child: Padding(
+        padding: EdgeInsets.all(16),       
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // TODO: Possibilitar carregar a imagem do banco ou arquivo .mif
+            Image.asset(parte.imagem),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 0),
+              child: Text(parte.nome, style: theme.textTheme.labelLarge),
+            ),
+            Text('Cortar: x${parte.quantidade}', style: theme.textTheme.bodyMedium,),
+            Text(parte.descricao, style: theme.textTheme.bodyMedium),
+          ],
+          )
+      )
     );
   }
 }
