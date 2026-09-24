@@ -15,7 +15,7 @@ class _HomeScreenState extends State<HomeScreen> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   // Moldes do Grid
-  final List<Molde> _moldes = _moldesExemplo;
+  final List<Molde> _moldes = moldesExemplo;
 
   @override
   Widget build(BuildContext context) {
@@ -243,81 +243,3 @@ class _AnimatedCategoryCardState extends State<_AnimatedCategoryCard> {
     );
   }
 }
-
-final List<Molde> _moldesExemplo = [
-  Molde(
-    modelo: 'Saia Reta',
-    modelista: "Ana Silva",
-    referencia: "S2020",
-    imagem: "saia_reta__Principal.png",
-    partes: [
-      Parte(
-        nome: "Frente",
-        quantidade: 1,
-        imagem: "saia_reta__Frente.png",
-      ),
-      Parte(
-        nome: "Costas",
-        quantidade: 1,
-        imagem: "saia_reta__Costas.png",
-      ),
-      Parte(
-        nome: "Cós",
-        quantidade: 1,
-        imagem: "saia_reta__Cós.png",
-      )
-    ],
-  ),
-  Molde(
-    modelo: 'Calça Jeans',
-    modelista: "Bottini",
-    referencia: "C2020",
-    imagem: "exmplo.png",
-    partes: [
-      Parte(
-        nome: "Exemplo",
-        quantidade: 1,
-        imagem: "exemplo.png",
-      ),
-    ],
-  ),
-  Molde(
-    modelo: 'Camiseta',
-    modelista: "Modelista Exemplo",
-    referencia: "C2020",
-    imagem: "exmplo.png",
-    partes: [
-      Parte(
-        nome: "Exemplo",
-        quantidade: 1,
-        imagem: "exemplo.png",
-      ),
-    ],
-  ),
-  Molde(
-    modelo: 'Vestido',
-    modelista: "Modelista Exemplo",
-    referencia: "V2020",
-    imagem: "exmplo.png",
-    partes: [
-      Parte(
-        nome: "Exemplo",
-        quantidade: 1,
-        imagem: "exemplo.png",
-      ),
-    ],
-  ),
-  Molde(
-    modelo: 'Short',
-    modelista: "Modelista Exemplo",
-    referencia: "S2020",
-    imagem: "exmplo.png",
-    partes: [
-      Parte(
-        nome: "Exemplo",
-        quantidade: 1,
-        imagem: "exemplo.png",
-      ),
-    ],
-  ),
-];
