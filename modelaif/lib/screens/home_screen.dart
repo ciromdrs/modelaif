@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import '../models/molde.dart';
 import 'pattern_screen.dart'; // Import da tela de detalhes
 import '../components/nav_bar.dart';
+import '../components/home_header.dart';
+import '../components/category_card.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -37,66 +39,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
 
       // APP BAR (Barra Superior Fixa)
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(64.0),
-        child: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 8.0),
-            child: Row(
-              children: [
-                // Botão de Menu Hambúrguer
-                IconButton(
-                  icon: const Icon(Icons.menu),
-                  onPressed: () {
-                    _scaffoldKey.currentState?.openDrawer();
-                  },
-                ),
-                const SizedBox(width: 4),
-
-                // Campo de Busca centralizado
-                Expanded(
-                  child: Container(
-                    height: 44,
-                    decoration: BoxDecoration(
-                      color: theme.colorScheme.surfaceContainer,
-                      borderRadius: BorderRadius.circular(22),
-                    ),
-                    padding: EdgeInsets.symmetric(horizontal: 16),
-                    child: Row(
-                      children: [
-                        Expanded(
-                          child: TextField(
-                            decoration: InputDecoration(
-                              hintText: 'Buscar molde',
-                              hintStyle: TextStyle(
-                                fontSize: 15,
-                              ),
-                              border: InputBorder.none,
-                            ),
-                          ),
-                        ),
-                        IconButton(
-                          icon: Icon(Icons.search),
-                          onPressed: () {},
-                          padding: EdgeInsets.zero,
-                          constraints: const BoxConstraints(),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                const SizedBox(width: 4),
-
-                // Botão de Filtro
-                IconButton(
-                  icon: Icon(Icons.filter_list),
-                  onPressed: () {},
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
+      appBar: HomeHeader(scaffoldKey: _scaffoldKey) as PreferredSizeWidget,
 
       // BODY (Corpo principal com rolagem ativada)
       body: Padding(
@@ -111,7 +54,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           itemBuilder: (context, index) {
             final Molde molde = _moldes[index];
-            return _AnimatedCategoryCard(
+            return AnimatedCategoryCard(
               title: molde.modelo,
               onTap: () {
                 // Navegação para a PatternScreen passando o nome da categoria
@@ -129,76 +72,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
       // BOTTOM NAVIGATION BAR (Barra Inferior Fixa)
       bottomNavigationBar: Navbar(),
-    );
-  }
-}
-
-// WIDGET AUXILIAR (Caixa clicável com animação de encolher ao toque)
-class _AnimatedCategoryCard extends StatefulWidget {
-  final String title;
-  final VoidCallback onTap;
-
-  const _AnimatedCategoryCard({
-    required this.title,
-    required this.onTap,
-  });
-
-  @override
-  State<_AnimatedCategoryCard> createState() => _AnimatedCategoryCardState();
-}
-
-class _AnimatedCategoryCardState extends State<_AnimatedCategoryCard> {
-  bool _isPressed = false;
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-
-    return GestureDetector(
-      onTapDown: (_) => setState(() => _isPressed = true),
-      onTapUp: (_) => setState(() => _isPressed = false),
-      onTapCancel: () => setState(() => _isPressed = false),
-      onTap: widget.onTap,
-      child: AnimatedScale(
-        scale: _isPressed ? 0.95 : 1.0, // Encolhe levemente ao pressionar
-        duration: Duration(milliseconds: 100),
-        child: Container(
-          decoration: BoxDecoration(
-            color: theme.colorScheme.primaryContainer,
-            borderRadius: BorderRadius.circular(20),
-          ),
-          padding: EdgeInsets.all(6.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // Área reservada para a imagem
-              Expanded(
-                child: Container(
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                    color: theme.colorScheme.surfaceContainerLowest,
-                    borderRadius: BorderRadius.circular(16),
-                  ),
-                ),
-              ),
-              const SizedBox(height: 6),
-
-              // Título da categoria
-              Padding(
-                padding: EdgeInsets.only(left: 6.0, bottom: 4.0),
-                child: Text(
-                  widget.title,
-                  style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w600,
-                    color: theme.colorScheme.onPrimaryContainer,
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
     );
   }
 }
