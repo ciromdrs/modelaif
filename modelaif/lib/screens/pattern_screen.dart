@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'back_bar.dart';
+import '../components/back_bar.dart';
 import 'package:modelaif/models/molde.dart';
 
 class PatternScreen extends StatefulWidget {
