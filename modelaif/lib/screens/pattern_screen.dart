@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'back_bar.dart';
+import 'package:modelaif/models/molde.dart';
 
 class PatternScreen extends StatefulWidget {
-  final String title;
+  final Molde model;
 
-  const PatternScreen({super.key, this.title = 'Detalhes do Molde'});
+  const PatternScreen(this.model, {super.key});
 
   @override
   State<PatternScreen> createState() => _PatternScreenState();
@@ -27,7 +28,7 @@ class _PatternScreenState extends State<PatternScreen> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final backBar = BackBar(title: 'Detalhes do Molde', context: context);
+    final backBar = BackBar(title: widget.model.modelo, context: context);
 
     return Scaffold(
       appBar: backBar,

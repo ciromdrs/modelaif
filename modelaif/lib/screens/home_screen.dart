@@ -119,7 +119,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => PatternScreen(title: molde.modelo),
+                    builder: (context) => PatternScreen(molde),
                   ),
                 );
               },
