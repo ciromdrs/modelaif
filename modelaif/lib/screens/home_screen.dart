@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../models/molde.dart';
 import 'pattern_screen.dart'; // Import da tela de detalhes
 
 class HomeScreen extends StatefulWidget {
@@ -13,14 +14,8 @@ class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
-  // Dados das categorias do Grid (incluindo o Short)
-  final List<Map<String, String>> _categories = [
-    {'title': 'Camiseta'},
-    {'title': 'Calça'},
-    {'title': 'Saia'},
-    {'title': 'Vestido'},
-    {'title': 'Short'},
-  ];
+  // Moldes do Grid
+  final List<Molde> _moldes = _moldesExemplo;
 
   @override
   Widget build(BuildContext context) {
@@ -106,7 +101,7 @@ class _HomeScreenState extends State<HomeScreen> {
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
         child: GridView.builder(
-          itemCount: _categories.length,
+          itemCount: _moldes.length,
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
             crossAxisSpacing: 12,
@@ -114,17 +109,15 @@ class _HomeScreenState extends State<HomeScreen> {
             childAspectRatio: 0.8,
           ),
           itemBuilder: (context, index) {
-            final category = _categories[index];
+            final Molde molde = _moldes[index];
             return _AnimatedCategoryCard(
-              title: category['title']!,
+              title: molde.modelo,
               onTap: () {
                 // Navegação para a PatternScreen passando o nome da categoria
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => PatternScreen(
-                      title: '${category['title']} Reta',
-                    ),
+                    builder: (context) => PatternScreen(title: molde.modelo),
                   ),
                 );
               },
@@ -144,7 +137,7 @@ class _HomeScreenState extends State<HomeScreen> {
             });
           },
           elevation: 0,
-          destinations: const [
+          destinations: [
             NavigationDestination(
               icon: Icon(Icons.checkroom_outlined),
               selectedIcon: Icon(Icons.checkroom),
@@ -231,3 +224,81 @@ class _AnimatedCategoryCardState extends State<_AnimatedCategoryCard> {
     );
   }
 }
+
+final List<Molde> _moldesExemplo = [
+  Molde(
+    modelo: 'Saia Reta',
+    modelista: "Ana Silva",
+    referencia: "S2020",
+    imagem: "saia_reta__Principal.png",
+    partes: [
+      Parte(
+        nome: "Frente",
+        quantidade: 1,
+        imagem: "saia_reta__Frente.png",
+      ),
+      Parte(
+        nome: "Costas",
+        quantidade: 1,
+        imagem: "saia_reta__Costas.png",
+      ),
+      Parte(
+        nome: "Cós",
+        quantidade: 1,
+        imagem: "saia_reta__Cós.png",
+      )
+    ],
+  ),
+  Molde(
+    modelo: 'Calça Jeans',
+    modelista: "Bottini",
+    referencia: "C2020",
+    imagem: "exmplo.png",
+    partes: [
+      Parte(
+        nome: "Exemplo",
+        quantidade: 1,
+        imagem: "exemplo.png",
+      ),
+    ],
+  ),
+  Molde(
+    modelo: 'Camiseta',
+    modelista: "Modelista Exemplo",
+    referencia: "C2020",
+    imagem: "exmplo.png",
+    partes: [
+      Parte(
+        nome: "Exemplo",
+        quantidade: 1,
+        imagem: "exemplo.png",
+      ),
+    ],
+  ),
+  Molde(
+    modelo: 'Vestido',
+    modelista: "Modelista Exemplo",
+    referencia: "V2020",
+    imagem: "exmplo.png",
+    partes: [
+      Parte(
+        nome: "Exemplo",
+        quantidade: 1,
+        imagem: "exemplo.png",
+      ),
+    ],
+  ),
+  Molde(
+    modelo: 'Short',
+    modelista: "Modelista Exemplo",
+    referencia: "S2020",
+    imagem: "exmplo.png",
+    partes: [
+      Parte(
+        nome: "Exemplo",
+        quantidade: 1,
+        imagem: "exemplo.png",
+      ),
+    ],
+  ),
+];
