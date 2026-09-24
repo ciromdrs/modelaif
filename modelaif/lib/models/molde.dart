@@ -43,10 +43,14 @@ class Parte {
   /// Caminho ou referência da imagem da parte do molde.
   String imagem;
 
+  /// A descrição de como cortar a parte.
+  String descricao;
+
   /// Cria uma instância de [Parte].
   Parte({
     required this.nome,
     required this.quantidade,
     required this.imagem,
+    required this.descricao,
   });
 }
