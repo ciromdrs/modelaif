@@ -22,6 +22,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final mediaQuery = MediaQuery.of(context);
     
     return Scaffold(
       key: _scaffoldKey,
@@ -72,23 +73,26 @@ class _HomeScreenState extends State<HomeScreen> {
 
       // Botão de ação flutuante (FAB)
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
-      floatingActionButton: SizedBox(
-        width: 226,
-        height: 60,
-        child: FloatingActionButton(
-          onPressed: () {
-            return;
-          },
-          backgroundColor: theme.colorScheme.primary,
-          foregroundColor: theme.colorScheme.onPrimary,
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(22)),
-          elevation: 6,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Icon(Icons.add, size: 23),
-              Text('Importar molde', style: TextStyle(fontSize: 16))
-            ],
+      floatingActionButton: Padding(
+        padding: EdgeInsets.only(bottom: 28),
+        child: SizedBox(
+          width: mediaQuery.size.width * .45,
+          height: 60,
+          child: FloatingActionButton(
+            onPressed: () {
+              return;
+            },
+            backgroundColor: theme.colorScheme.primary,
+            foregroundColor: theme.colorScheme.onPrimary,
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(22)),
+            elevation: 6,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Icon(Icons.add, size: 23),
+                Text('Importar molde', style: TextStyle(fontSize: 16))
+              ],
+            )
           )
         )
       ),
