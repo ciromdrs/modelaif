@@ -18,7 +18,7 @@ class _NavbarState extends State<Navbar> {
     return UnconstrainedBox(
       child: Container(
         width: mediaQuery.size.width * .48,
-        height: 80,
+        height: 76,
         margin: EdgeInsets.only(left: 0, top: 0, right: 0, bottom: 20),
         decoration: BoxDecoration(
           color: theme.colorScheme.surfaceContainer,
