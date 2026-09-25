@@ -50,16 +50,28 @@ class _AnimatedCategoryCardState extends State<AnimatedCategoryCard> {
               ),
               const SizedBox(height: 6),
 
-              // Título da categoria
+              // Textos da categoria
               Padding(
                 padding: EdgeInsets.only(left: 6.0, bottom: 4.0),
-                child: Text(
-                  widget.title,
-                  style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w600,
-                    color: theme.colorScheme.onPrimaryContainer,
-                  ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      widget.title,
+                      style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600,
+                        color: theme.colorScheme.onPrimaryContainer,
+                      )
+                    ),
+                    Text(
+                      'Mais informações',
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w500,
+                      )
+                    )
+                  ]
                 ),
               ),
             ],
