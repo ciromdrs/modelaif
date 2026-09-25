@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import '../models/molde.dart';
-import 'pattern_screen.dart'; // Import da tela de detalhes
 import '../components/nav_bar.dart';
 import '../components/home_header.dart';
-import '../components/category_card.dart';
 import '../components/fab_importar.dart';
 import '../components/cards_padding.dart';
 
