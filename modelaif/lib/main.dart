@@ -18,6 +18,18 @@ class ModelaIFApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(
           seedColor: const Color(0xFF00CC4D)
         ),
+
+        textTheme: const TextTheme(
+          labelLarge: TextStyle(
+            fontWeight: FontWeight.w700,
+          ),
+          labelMedium: TextStyle(
+            fontWeight: FontWeight.w500,
+          ),
+          labelSmall: TextStyle(
+            fontWeight: FontWeight.w500,
+          ),
+        ),
       ),
       home: const HomeScreen(),
     );
