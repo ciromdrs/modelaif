@@ -70,6 +70,29 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
 
+      // Botão de ação flutuante (FAB)
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+      floatingActionButton: SizedBox(
+        width: 226,
+        height: 60,
+        child: FloatingActionButton(
+          onPressed: () {
+            return;
+          },
+          backgroundColor: theme.colorScheme.primary,
+          foregroundColor: theme.colorScheme.onPrimary,
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(22)),
+          elevation: 6,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Icon(Icons.add, size: 23),
+              Text('Importar molde', style: TextStyle(fontSize: 16))
+            ],
+          )
+        )
+      ),
+
       // BOTTOM NAVIGATION BAR (Barra Inferior Fixa)
       bottomNavigationBar: Navbar(),
     );
