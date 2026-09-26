@@ -6,6 +6,7 @@ class AnimatedCategoryCard extends StatefulWidget {
   final VoidCallback onTap;
 
   const AnimatedCategoryCard({
+    super.key,
     required this.title,
     required this.onTap,
   });
